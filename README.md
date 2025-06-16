@@ -1,81 +1,110 @@
-📘 mcpdemo — Multi-Tool Chat Agent (OpenAI + Playwright + MCP)
-This is an AI-powered command-line chatbot that integrates:
+# 🤖 MCP Demo — AI Chat Agent with Tool Use
 
-✅ OpenAI Chat API
+This project is a command-line chatbot that integrates:
 
-✅ Custom Google Search via Playwright
+- 🧠 OpenAI's `gpt-4o-mini` for natural conversation
+- 🌐 Google Search via a custom Playwright tool
+- 🧰 Additional tools via MCP (Multi-Command Plugin) like DuckDuckGo, Airbnb, etc.
 
-✅ Support for MCP (Multi-Command Plugin) tools like DuckDuckGo, Airbnb, etc.
+It allows queries like:
 
-It allows natural conversations and tool-augmented queries like:
+> **Search g-search for "top AI trends in 2025"**  
+> **Use Playwright to open example.com and extract the heading**
 
-1) Use Playwright to go to https://books.toscrape.com and list the titles and prices of the first 3 books.
-2) Visit https://quotes.toscrape.com with Playwright and extract 3 quotes along with their authors.
-3) Use Playwright to visit https://www.w3schools.com/html/html_tables.asp and extract all rows from the table with company names and countries.
+---
 
-🚀 Setup Instructions
-1. Clone this repository
-bash
-Copy
-Edit
+## 📁 Project Structure
+
+mcpdemo/
+├── app.py # Main chat logic
+├── main.py # Optional entry point
+├── browser_mcp.json # MCP tool config
+├── tools/
+│ └── google-search/
+│ └── server.js # Custom Google scraper with Playwright
+├── .env # OpenAI key (ignored)
+├── .gitignore
+├── README.md
+├── requirements.txt # Python dependencies
+├── package.json # Node dependencies
+└── pyproject.toml
+
+---
+
+## 🚀 Setup Instructions
+
+### 1. Clone the repo
+
+```bash
 git clone https://github.com/svharivinod/mcpdemo.git
 cd mcpdemo
-2. Install Python dependencies
-Make sure you're using Python 3.11+ (as required by mcp-use).
+
+2. Set up Python environment
+Ensure you're using Python 3.11+
 
 bash
 Copy
 Edit
 python -m venv .venv
-.venv\Scripts\activate  # On Windows
-# source .venv/bin/activate  # On Mac/Linux
+.venv\Scripts\activate     # Windows
+# source .venv/bin/activate  # macOS/Linux
+Install Python dependencies:
 
-uv pip install -r requirements.txt  # If using uv
+bash
+Copy
+Edit
+uv pip install -r requirements.txt
+# or use pip directly if not using uv
 3. Install Node + Playwright
-If not already installed:
-
 bash
 Copy
 Edit
 npm install
 npx playwright install
-4. Set up your .env file
-Create a .env file with your OpenAI API key:
+4. Add your OpenAI API key
+Create a file named .env in the root directory:
 
 ini
 Copy
 Edit
-OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-✅ Do not commit this file (it’s ignored via .gitignore).
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+✅ This file is .gitignored and won't be pushed to GitHub.
 
-5. Run the chatbot
+🧪 How to Run
+Start the chat:
+
 bash
 Copy
 Edit
 uv run app.py
-🔍 Example Prompts You Can Try
-Search g-search for "best generative AI apps in 2025"
+You'll see:
 
-Use Playwright to visit https://example.com and extract the heading
-
-Type 'exit' to quit or 'clear' to reset memory
-
-📁 Project Structure
-bash
+pgsql
 Copy
 Edit
-.
-├── app.py                    # Main chatbot loop
-├── browser_mcp.json          # MCP tool configuration
-├── tools/
-│   └── google-search/        # Custom Google scraper using Playwright
-│       └── server.js
-├── requirements.txt
-├── package.json              # Node.js dependencies (Playwright)
-└── .env                      # Your OpenAI API key (not tracked)
-📌 Notes
-You must have a valid OpenAI API key to use this chatbot.
+======== Interactive MCP Chat ========
+Type 'exit' to end the chat.
+Type 'clear' to clear the memory.
+💬 Example Prompts to Try
+Search g-search for "best AI tools in 2025"
 
-.env is excluded from Git to protect your secrets.
+Use Playwright to extract the heading from https://example.com
 
-Supports custom tools defined via MCP and Playwright integrations.
+Search DuckDuckGo for news on generative AI
+
+Exit → quit chat
+
+Clear → clear memory context
+
+🛡️ Security Note
+API keys should never be committed. This repo blocks .env via .gitignore.
+
+GitHub may reject pushes with secrets. If that happens, follow these steps to clean your Git history.
+
+📄 License
+MIT © svharivinod
+
+yaml
+Copy
+Edit
+
