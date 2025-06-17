@@ -1,3 +1,8 @@
+![Python](https://img.shields.io/badge/python-3.11+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green)
+![OpenAI](https://img.shields.io/badge/OpenAI-API-enabled-ff69b4)
+![Playwright](https://img.shields.io/badge/Playwright-enabled-yellow)
+
 # 🤖 MCP Demo — AI Chat Agent with Tool Use
 
 This project is a command-line chatbot that integrates:
